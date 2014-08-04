@@ -1,0 +1,11 @@
+{
+	"name": "grunt-contrib-juicepress",
+	"version": "0.1.0",
+	"description": "Grunt handler for the juicepress blog generator",
+	"author": "Georg Grossberger <contact@grossberger-ge.org> (http://grossberger-ge.org)",
+	"license": "MIT",
+	"require": {
+		"juicepress": "1.0.*"
+	},
+	"keywords": ["grunt", "plugin", "juicepress", "blog", "builder", "generator"]
+}
