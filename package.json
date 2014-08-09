@@ -1,11 +1,28 @@
 {
-	"name": "grunt-contrib-juicepress",
-	"version": "0.1.1",
-	"description": "Grunt handler for the juicepress blog generator",
-	"author": "Georg Grossberger <contact@grossberger-ge.org> (http://grossberger-ge.org)",
-	"license": "MIT",
-	"dependencies": {
-		"juicepress": "1.0.*"
-	},
-	"keywords": ["grunt", "plugin", "juicepress", "blog", "builder", "generator"]
+  "name": "grunt-contrib-juicepress",
+  "version": "0.1.1",
+  "description": "Grunt handler for the juicepress blog generator",
+  "author": "Georg Grossberger <contact@grossberger-ge.org> (http://grossberger-ge.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trenker/grunt-contrib-juicepress/issues",
+    "email": "contact@grossberger-ge.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trenker/grunt-contrib-juicepress.git"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "juicepress": "1.0.*",
+    "mkdirp": "^0.5.0"
+  },
+  "keywords": [
+    "grunt",
+    "plugin",
+    "juicepress",
+    "blog",
+    "builder",
+    "generator"
+  ]
 }
