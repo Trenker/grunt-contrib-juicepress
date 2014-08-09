@@ -44,8 +44,7 @@ module.exports = function(grunt) {
 		this.files.forEach(function(file) {
 
 			file = {
-				from: file.src.shift(),
-				to: file.dest
+				from: file.src.shift()
 			};
 
 			if (/\.(md|markdown)$/.test(file.from)) {
@@ -58,11 +57,39 @@ module.exports = function(grunt) {
 		var done = this.async();
 		var juicepress = require("juicepress");
 
-		juicepress(options, files, function(err) {
+		juicepress(options, files, function(err, files) {
 			if (err) {
 				done(false, err.toString());
 			} else {
-				done(true);
+
+				var path  = require("path");
+				var mkdir = require("mkdirp");
+				var fs    = require("fs");
+
+				require("async").parallel(
+					files.map(function(file) {
+						return function(cb) {
+							var targetFile = path.resolve(process.cwd(), options.buildDirectory, file.file);
+							var parts = targetFile.split(path.sep);
+							parts.pop();
+
+							mkdir(parts.join(path.sep), function(err) {
+								if (err) {
+									cb(err);
+								} else {
+									fs.writeFile(targetFile, file.content, cb);
+								}
+							});
+						}
+					}),
+					function(err) {
+						if (err) {
+							done(false, err.toString());
+						} else {
+							done(true);
+						}
+					}
+				);
 			}
 		});
 	});
