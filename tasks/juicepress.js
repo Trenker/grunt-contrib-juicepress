@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 				var fs    = require("fs");
 
 				require("async").parallel(
-					files.map(function(file) {
+					htmls.map(function(file) {
 						return function(cb) {
 							var targetFile = path.resolve(process.cwd(), options.buildDirectory, file.file);
 							var parts = targetFile.split(path.sep);
@@ -86,6 +86,7 @@ module.exports = function(grunt) {
 						if (err) {
 							done(false, err.toString());
 						} else {
+							grunt.log.ok("Created " + htmls.length + " html files from " + files.length + " posts");
 							done(true);
 						}
 					}
