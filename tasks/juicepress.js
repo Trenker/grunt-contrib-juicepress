@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 			paginationSuffix: "/page-{{ PAGE }}",
 			tagPagePrefix: "tags/",
 			categoryPagePrefix: "categories/",
-			layoutsDirectory: "./layouts/**.*",
+			layouts: "./layouts/**.*",
 			defaultLayout: "default",
 			listLayout: "list",
 			partials: "./partials/*",
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 					post: 1
 				},
 				target: "sitemap.xml"
-			},
+			}
 		});
 		var files = [];
 
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 		var done = this.async();
 		var juicepress = require("juicepress");
 
-		juicepress(options, files, function(err, files) {
+		juicepress(options, files, function(err, htmls) {
 			if (err) {
 				done(false, err.toString());
 			} else {
